@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import PictureList from './PictureList';
+import { PictureListProps } from './PictureList';
 
-const Card = styled.div`
-display: flex;
-  height: 100%;
-  margin-left: 0.25rem;
-`;
-
-const StateText = styled.h2`
-  display: flex;
-  flex-wrap: nowrap;
-  /* justify-content: center; */
-`;
+interface PictureProps {
+  images: PictureListProps
+}
 
 const LoadingText = styled.h2`
   display: flex;
@@ -23,7 +16,7 @@ const LoadingText = styled.h2`
   font-family: 'Roboto';
 `;
 
-class Picture extends React.Component {
+class Picture extends React.Component<PictureProps> {
   state = {
     images: []
   };
@@ -43,13 +36,13 @@ class Picture extends React.Component {
           count: 10
         }
       })
-      .then(response => {
+      .then(res => {
         this.setState({
-          images: [...this.state.images, ...response.data.map(images => images.urls.small)],
+          images: [...this.state.images, ...res.data.map(images => images.urls.small)],
         });
       })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        console.log(err);
         this.setState({
         });
       });

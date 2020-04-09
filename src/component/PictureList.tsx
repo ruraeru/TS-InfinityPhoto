@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Photo } from './Picture';
 
-interface PictureListProps {
-  images : Photo
+export interface PictureListProps {
+  images : {
+    urls: {
+      small: any
+    }
+  };
 }
 
 const ImageItem = styled.img`
