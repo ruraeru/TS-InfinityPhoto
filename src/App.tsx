@@ -1,12 +1,12 @@
 import React from 'react';
-import Photos from './component/Picture';
+import Picture from './component/Picture';
 import Title from './component/Title';
 
 const App: React.FC = () => {
   return (
     <>
       <Title />
-      <Photos />
+      <Picture />
     </>
   )
 }
